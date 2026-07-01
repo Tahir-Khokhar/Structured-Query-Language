@@ -1,0 +1,31 @@
+-- Using Data Base Employee  
+
+Use Employee;
+
+-- 1 SELECT Statement 
+
+-- 1.1 SELECT One Column
+SELECT Id FROM Users;
+
+-- 1.2 SELECT Multiple Column
+SELECT Id , Name FROM Users; 
+
+-- 1.3 SELECT All Column
+SELECT * FROM Users;
+
+-- 1.4 SELECT DISTINCT Statement
+SELECT DiSTINCT Role FROM Users;
+
+-- 1.5 SELECT DISTINCT Multiple Columns 
+SELECT DiSTINCT Address,Role FROM Users;
+
+-- 1.6 SELECT Statement with WHERE Clause
+SELECT * FROM USERS WHERE Role='Software Engineer';
+
+-- 1.7 SELECT Statement with ORDER BY Clause
+SELECT * FROM Users ORDER BY Name;
+SELECT Name,Role,LPA from Users ORDER BY LPA DESC;
+
+-- 1.8 ORDERING by Many Columns 
+SELECT Name,LPA FROM Users ORDER BY Role, LPA DESC;
+
