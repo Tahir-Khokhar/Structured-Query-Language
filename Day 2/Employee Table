@@ -1,0 +1,14 @@
+Create database Employee; 
+Use Employee;
+Create Table Users(
+	Id int auto_increment primary key,
+	Name varchar(50) not null,
+	Gender varchar(50) not null,
+    Email varchar(50) not null,
+    Phone varchar(50) not null,
+    Address varchar(50) not null,
+    Role varchar(50) not null,
+    LPA varchar(50) not null,
+    Created_At TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+ select * from Users;
