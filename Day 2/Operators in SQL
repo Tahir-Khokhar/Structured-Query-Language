@@ -1,0 +1,139 @@
+-- Using Data Base Employee  
+
+Use Employee;
+
+-- Operators in SQL
+
+-- 2 Arithmetic Operators
+
+-- 2.1 Addition Operators
+SELECT Name, LPA, LPA + 2 AS Increased_LPA FROM Users;
+
+-- 2.2 Subtraction Operators
+SELECT Name, LPA, LPA - 2 AS Reduced_LPA FROM Users;
+
+-- 2.3 Multiplication Operators
+SELECT Name, LPA, LPA * 2 AS Double_LPA FROM Users;
+
+-- 2.4 Division Operators
+SELECT Name, LPA, LPA / 2 AS Half_LPA FROM Users;
+
+-- 2.5 Modulus Operators
+SELECT Name, LPA, LPA % 2 AS Remainder FROM Users;
+
+-- 3 Relational (Comparison) Operators
+
+-- 3.1 Equal To (=) 
+SELECT * FROM Users WHERE Role = 'Software Engineer';
+
+-- 3.2 Not Equal To (<>)
+SELECT * FROM Users WHERE Role <> 'Software Engineer';
+
+-- 3.3 Greater Than (>)
+SELECT * FROM Users WHERE LPA > 15;
+
+-- 3.4 Less Than (<)
+SELECT * FROM Users WHERE LPA < 10;
+
+-- 3.5 Greater Than or Equal To (>=)
+SELECT * FROM Users WHERE LPA >= 15;
+
+-- 3.6 Less Than or Equal To (<=)
+SELECT * FROM Users WHERE LPA <= 10;
+
+-- 4. Logical Operators
+
+-- 4.1 AND
+SELECT * FROM Users WHERE Gender='Female' AND LPA>15;
+
+-- 4.2 OR
+SELECT * FROM Users WHERE Address='Lahore' OR Address='Karachi';
+
+-- 4.3 NOT
+SELECT * FROM Users WHERE NOT Role='Teacher';
+
+-- 5. BETWEEN Operator
+SELECT * FROM Users WHERE LPA BETWEEN 10 AND 15;
+
+-- 6. IN Operator
+SELECT * FROM Users WHERE Address IN ('Lahore','Karachi','Islamabad');
+
+-- 7. NOT IN Operator
+SELECT * FROM Users WHERE Address NOT IN ('Lahore','Karachi');
+
+-- 8. LIKE Operator
+
+-- 8.1 Starts With
+SELECT * FROM Users WHERE Name LIKE 'A%';
+
+-- 8.2 Ends With
+SELECT * FROM Users WHERE Name LIKE '%Khan';
+
+-- 8.3 Contains
+SELECT * FROM Users WHERE Role LIKE '%Engineer%';
+
+-- 8.4 Second Character is 'a'
+SELECT * FROM Users WHERE Name LIKE '_a%';
+
+-- 9. IS NULL Operator
+SELECT * FROM Users WHERE Address IS NULL;
+
+-- 10. IS NOT NULL Operator
+SELECT * FROM Users WHERE Address IS NOT NULL;
+
+-- 11. EXISTS Operator
+SELECT * FROM Users
+WHERE EXISTS (
+	SELECT * FROM Users WHERE Role='Doctor'
+);
+
+-- 12. NOT EXISTS Operator
+SELECT * FROM Users
+WHERE NOT EXISTS (
+    SELECT * FROM Users WHERE Role='Pilot'
+);
+
+-- 13. ANY Operator
+SELECT * FROM Users
+WHERE LPA > ANY (
+    SELECT LPA FROM Users WHERE Role='Teacher'
+);
+
+-- 14. ALL Operator
+SELECT * FROM Users
+WHERE LPA > ALL (
+    SELECT LPA FROM Users WHERE Role='Teacher'
+);
+
+-- 15. CASE Operator
+SELECT Name,
+CASE
+    WHEN LPA >= 20 THEN 'Excellent'
+    WHEN LPA >= 15 THEN 'Very Good'
+    WHEN LPA >= 10 THEN 'Good'
+    ELSE 'Average'
+END AS Salary_Level
+FROM Users;
+
+-- 16. Arithmetic with WHERE
+SELECT Name, LPA+5 AS Updated_LPA
+FROM Users
+WHERE Role='Software Engineer';
+
+-- 17. Combining Multiple Operators
+
+-- 17.1 AND + LIKE
+SELECT * FROM Users
+WHERE Role LIKE '%Engineer%' AND LPA > 12;
+
+-- 17.2 OR + BETWEEN
+SELECT * FROM Users
+WHERE Address='Lahore' OR LPA BETWEEN 20 AND 25;
+
+-- 17.3 NOT + IN
+SELECT * FROM Users
+WHERE NOT Address IN ('Lahore','Karachi');
+
+-- 17.4 IN + BETWEEN
+SELECT * FROM Users
+WHERE Address IN ('Lahore','Karachi') AND LPA BETWEEN 10 AND 15;
